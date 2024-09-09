@@ -21,7 +21,7 @@
           "host": "showcase-qa.zencite.in",
           "embed": true,
           "kcid": "ciacabb27b59ad412fbbdbd5dd59ee576e",
-          "token" : "u1RJ7rbASMjJlhb36WsI/yZGNT6vAb09YULzBEuw28Gxs5xNXqU3I2zyMmwUo3PCaAh0CLVtq/KHzlbXjtfgzAAEtVPddgDk3qe8mucEmoTsVeYmWgV6yiP5x1YbF2SkAhf6A7+ufUXW/Ohglg3u6hi41BCNsN5+nIzTHEoAnCP8Ttmv21qbUOsDcWjWjxtfGtDFpbIDabZ7auQtMSxFp3AqWxuqJf/s6xTqexFq03Y6f8FsaZY0bd7jVHS3jHcrmHvKuWBQJjQr1wcQDAvbobxFALtO/+Yvn5Khj0XhhfIWHd8DT4lKhJHjFZafxgNFkkroMMTOCtUtHAUxjdQUKyGktmDYpkPJnNRSNm9aIoCkb/5Dqid0Ab/EqV/nuiMUXhRF9OLYU9xlbOyMQR3fCO1yPYyioH8bncuc5PPuRWniZ4liDMa6Ima4Fx1Gg1sB7iRl4Bn2vutTgBZYXDbjhwxexAJ+jDpfonBID/3Fn28="
+          "token" : "u1RJ7rbASMjJlhb36WsI/yZGNT6vAb09YULzBEuw28Gxs5xNXqU3I2zyMmwUo3PCaAh0CLVtq/KHzlbXjtfgzAAEtVPddgDk3qe8mucEmoTsVeYmWgV6yiP5x1YbF2SkAhf6A7+ufUXW/Ohglg3u6hi41BCNsN5+nIzTHEoAnCP8Ttmv21qbUOsDcWjWjxtfGtDFpbIDabZ7auQtMSxFp3AqWxuqJf/s6xTqexFq03Y6f8FsaZY0bd7jVHS3jHcrmHvKuWBQJjQr1wcQDAvbobxFALtO/+Yvn5Khj0XhhfIWHd8DT4lKhJHjFZafxgNFkkroMMTOCtUtHAUxjdQUKyGktmDYpkPJnNRSNm9aIoCkb/5Dqid0Ab/EqV/nuiMUG1f9vLpTWEeAFxli+ugJ6SgjrGWAGOjSG2g8CIYTLBipScw4Cg8ctmioMBIXFhNvplpDApiy2T5tzaQpSItNABDbH4cQynLbfYLYF5TRPds="
         });
         
       }
@@ -77,7 +77,8 @@
     const submissionMessage = document.getElementById('submissionMessage');
     async function startScreenRecording() {
         try {
-            window.rigelcamera.startScreenRecorder();
+            window.rigelcamera.initCameraRecorder();
+            window.rigelcamera.startCameraRecorder();
             startBtn.disabled = true;
             stopBtn.disabled = false;
             submitBtn.disabled = true;
@@ -88,7 +89,7 @@
 
       async function stopScreenRecording() {
         try {
-            window.rigelcamera.stopScreenRecorder(()=>{console.log("******************** Recording stoppedddd")});
+            window.rigelcamera.stopCameraRecorder(()=>{console.log("******************** Recording stoppedddd")});
             stopBtn.disabled = true;
             startBtn.disabled = true;
             submitBtn.disabled = false;
