@@ -108,9 +108,8 @@
 
       async function stopScreenRecording() {
         try{
-            window.rigelscreen.stopCameraRecorder(()=>{console.log("******************** Recording stoppedddd")
+            window.rigelscreen.stopCameraRecorder(()=>{console.log("******************** Recording stoppedddd")});
             window.rigelscreen.stopScreenRecorder(()=>{console.log("******************** Recording stoppedddd")});
-        });
             stopBtn.disabled = true;
             startBtn.disabled = true;
             submitBtn.disabled = false;
