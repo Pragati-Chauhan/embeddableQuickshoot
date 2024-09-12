@@ -23,21 +23,6 @@
           "kcid" : "ciacabb27b59ad412fbbdbd5dd59ee576e",
           "token" : "u1RJ7rbASMjJlhb36WsI/yZGNT6vAb09YULzBEuw28Gxs5xNXqU3I2zyMmwUo3PCaAh0CLVtq/KHzlbXjtfgzAAEtVPddgDk3qe8mucEmoTsVeYmWgV6yiP5x1YbF2SkAhf6A7+ufUXW/Ohglg3u6hi41BCNsN5+nIzTHEoAnCP8Ttmv21qbUOsDcWjWjxtfGtDFpbIDabZ7auQtMSxFp3AqWxuqJf/s6xTqexFq03Y6f8FsaZY0bd7jVHS3jHcrmHvKuWBQJjQr1wcQDAvbobxFALtO/+Yvn5Khj0XhhfIWHd8DT4lKhJHjFZafxgNFkkroMMTOCtUtHAUxjdQUKyGktmDYpkPJnNRSNm9aIoBZAoOOFxIUXgsh3GDKyikflaH+Hg3wOXG14gvYPCosQAsL657ncY/XXdvpaQ2XF2q/cT9WJTdxXWH1zn3tI4E8vmrqaeWWPAF9KVVlULmjv01VSZB0I/kPMWLm8Inkkvg="
         });
-        // window.rigelcamera = new Rigel({
-        //   "terms": null,
-        //   "is_vertical_recording_supported": false,
-        //   "host": "showcase-qa.zencite.in",
-        //   "embed": true,
-        //   "kcid":"ciab8ebf7d168348ed8312742a5fd078e9"
-        // });
-
-        /*
-            try {
-                window.rigelscreen.initScreenCapture();
-            } catch(err){
-                console.log("Errorrrrrrrrr => ",err); 
-            }
-        */
       }
       function onDocumentReady(callback) {
         if (document.readyState === "loading") {
@@ -115,7 +100,7 @@
         const recordingName = prompt("Please enter the name for your recording:");
         if (recordingName) {
           try { 
-              window.rigelscreen.submitRecording(`${recordingName}`);
+              window.rigelscreen.submitRecording(`${recordingName}Screen`);
               startBtn.disabled = true;
               stopBtn.disabled = true;
               submitBtn.disabled = true;
