@@ -25,7 +25,14 @@
           "token" : "u1RJ7rbASMjJlhb36WsI/yZGNT6vAb09YULzBEuw28Gxs5xNXqU3I2zyMmwUo3PCaAh0CLVtq/KHzlbXjtfgzAAEtVPddgDk3qe8mucEmoTsVeYmWgV6yiP5x1YbF2SkAhf6A7+ufUXW/Ohglg3u6hi41BCNsN5+nIzTHEoAnCP8Ttmv21qbUOsDcWjWjxtfGtDFpbIDabZ7auQtMSxFp3AqWxuqJf/s6xTqexFq03Y6f8FsaZY0bd7jVHS3jHcrmHvKuWBQJjQr1wcQDAvbobxFALtO/+Yvn5Khj0XhhfIWHd8DT4lKhJHjFZafxgNFkkroMMTOCtUtHAUxjdQUKyGktmDYpkPJnNRSNm9aIoBZAoOOFxIUXgsh3GDKyikfUZBTDgq9+iD/Tc3zuqPno6zqJVyvYCcAMJJHTCQ20eqFxUV6Bzxv3sLXnMdieUuRO45UuyGp0XeLujnzY8k6wsSuWDQM0rWH+yKlEbb/iuI="
         });
           setTimeout(() => {
-            window.rigelcamera.initCameraRecorder();
+            window.rigelcamera.initCameraRecorder()
+            .then(() => {
+                console.log("Camera recorder initialized successfully.");
+                  })
+            .catch((err) => {
+                console.error("Error initializing camera recorder: " + err.message);
+                  });
+
           }, 1000);
       }
       function onDocumentReady(callback) {
