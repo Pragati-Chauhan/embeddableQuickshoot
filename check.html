@@ -72,7 +72,34 @@
     </style>
     <script async type="text/javascript" src="https://assets.zencite.in/orca/media/embed/quickshootEmbed.js?1"></script>
     <script>
-      // ... (rest of the script remains unchanged)
+        async function stopScreenRecording() {
+        try {
+            window.rigelscreen.stopScreenRecorder(()=>{console.log("******************** Recording stoppedddd")});
+            stopBtn.disabled = true;
+            startBtn.disabled = true;
+            submitBtn.disabled = false;
+        } catch(err){
+            console.log("Errorrrrrrrrr in stop recording => ",err); 
+        }
+        }
+        async function submitScreenRecording() {
+        const recordingName = prompt("Please enter the name for your recording:");
+        if (recordingName) {
+        try { 
+          window.rigelscreen.submitRecording(`${recordingName}Screen`);
+          startBtn.disabled = true;
+          stopBtn.disabled = true;
+          submitBtn.disabled = true;
+          submissionMessage.style.display = 'block';
+        } catch(err){
+          console.log("Errorrrrrrrrr in submit recording => ",err); 
+        }
+        console.log(`Submitted screen recording with the name: ${recordingName}`);
+        // Add logic to submit the recording with the given name
+        } else {
+        console.log("No name entered. Recording not submitted.");
+        }
+        }
     </script>
 </head>
 <body>
@@ -101,7 +128,9 @@
     </div>
   </div>
   <script>
-    // ... (rest of the script remains unchanged)
+      startBtn.addEventListener('click', startScreenRecording);
+      stopBtn.addEventListener('click', stopScreenRecording);
+      submitBtn.addEventListener('click', submitScreenRecording);
   </script>
 </body>
 </html>
