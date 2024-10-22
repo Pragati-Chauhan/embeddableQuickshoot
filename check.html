@@ -72,37 +72,35 @@
     </style>
     <script async type="text/javascript" src="https://assets.zencite.in/orca/media/embed/quickshootEmbed.js?1"></script>
     <script>
-        async function stopScreenRecording() {
-        try {
-            window.rigelscreen.stopScreenRecorder(()=>{console.log("******************** Recording stoppedddd")});
-            stopBtn.disabled = true;
-            startBtn.disabled = true;
-            submitBtn.disabled = false;
-        } catch(err){
-            console.log("Errorrrrrrrrr in stop recording => ",err); 
-        }
-        }
-        async function submitScreenRecording() {
-        const recordingName = prompt("Please enter the name for your recording:");
-        if (recordingName) {
-        try { 
-          window.rigelscreen.submitRecording(`${recordingName}Screen`);
-          startBtn.disabled = true;
-          stopBtn.disabled = true;
-          submitBtn.disabled = true;
-          submissionMessage.style.display = 'block';
-        } catch(err){
-          console.log("Errorrrrrrrrr in submit recording => ",err); 
-        }
-        console.log(`Submitted screen recording with the name: ${recordingName}`);
-        // Add logic to submit the recording with the given name
+      function createRigelInstance() {
+        window.rigelscreen = new Rigel({
+          "terms": null,
+          "is_vertical_recording_supported": false,
+          "host": "showcase-qa.zencite.in",
+          "embed": true,
+          //"screenCaptureElement": "monitor", // this can be browser or window or monitor
+          "kcid" : "ciacabb27b59ad412fbbdbd5dd59ee576e",
+          "token" : "u1RJ7rbASMjJlhb36WsI/yZGNT6vAb09YULzBEuw28Gxs5xNXqU3I2zyMmwUo3PCaAh0CLVtq/KHzlbXjtfgzDQLbVVjYsbexln9riNwH8ly4TEUieRD8DsdJ/ABf4bwCS/QAJDnpAV4fPhIj9JNAkkfTMQ3Afzc3UWv8g+Cy8eAYm++chBWPm2ftYVrsWLPnR07HkNYQfCje/JUefLcxyh5HUVGfoTCspRKEH+IeWwm5ysWxmN3XfUUifRLqTrKoINfOIFCPHRfu4VTjUmLW2u0KR6QC6nVMsoS3UkMWhsPiomtsIDiVtQnxXYQKSgtVIY5uAhwDX1OFSPApzxcIcx4ADGvJW6ImTzTr2Ucsf746SlX7vkZ82Ges/4Sr3Vd7VR8W03eE2KExeTJbnkG01Jd5ykFbVGWsPQx121DZIAUD9nzeTbZL5SAQQpdX0oLJjhKivNtYa/Z6VIKFsEFHSo5/au6tjKe1tZg50xzqVU="
+        });
+      }
+      function onDocumentReady(callback) {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", callback);
         } else {
-        console.log("No name entered. Recording not submitted.");
+          callback();
         }
-        }
-        startBtn.addEventListener('click', startScreenRecording);
-        stopBtn.addEventListener('click', stopScreenRecording);
-        submitBtn.addEventListener('click', submitScreenRecording);
+      }
+
+      function addEventListenerForRigelScriptLoading(){
+        document.addEventListener("rigelScriptLoaded",() => {
+          console.log("**************** Rigel script loaded *********************");
+          createRigelInstance();
+        });
+      }
+
+      onDocumentReady(function() {
+        addEventListenerForRigelScriptLoading();
+      });
     </script>
 </head>
 <body>
@@ -131,9 +129,53 @@
     </div>
   </div>
   <script>
-      // startBtn.addEventListener('click', startScreenRecording);
-      // stopBtn.addEventListener('click', stopScreenRecording);
-      // submitBtn.addEventListener('click', submitScreenRecording);
+      const startBtn = document.getElementById('startRecording');
+    const stopBtn = document.getElementById('stopRecording');
+    const submitBtn = document.getElementById('submitRecording');
+    const submissionMessage = document.getElementById('submissionMessage');
+    async function startScreenRecording() {
+        try {
+            window.rigelscreen.startScreenRecorder();
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            submitBtn.disabled = true;
+        } catch(err){
+            console.log("Errorrrrrrrrr in start recording => ",err); 
+        }
+      }
+
+      async function stopScreenRecording() {
+        try {
+            window.rigelscreen.stopScreenRecorder(()=>{console.log("******************** Recording stoppedddd")});
+            stopBtn.disabled = true;
+            startBtn.disabled = true;
+            submitBtn.disabled = false;
+        } catch(err){
+            console.log("Errorrrrrrrrr in stop recording => ",err); 
+        }
+      }
+
+      async function submitScreenRecording() {
+        const recordingName = prompt("Please enter the name for your recording:");
+        if (recordingName) {
+          try { 
+              window.rigelscreen.submitRecording(`${recordingName}Screen`);
+              startBtn.disabled = true;
+              stopBtn.disabled = true;
+              submitBtn.disabled = true;
+              submissionMessage.style.display = 'block';
+          } catch(err){
+              console.log("Errorrrrrrrrr in submit recording => ",err); 
+          }
+            console.log(`Submitted screen recording with the name: ${recordingName}`);
+            // Add logic to submit the recording with the given name
+        } else {
+            console.log("No name entered. Recording not submitted.");
+        }
+      }
+      startBtn.addEventListener('click', startScreenRecording);
+      stopBtn.addEventListener('click', stopScreenRecording);
+      submitBtn.addEventListener('click', submitScreenRecording);
   </script>
 </body>
 </html>
