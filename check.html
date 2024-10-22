@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Page</title>
+    <style>
+      body {
+        background-color: #e6f2ff;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .assessment {
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .kpoint-recording-controls {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        margin: 20px 0;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      #startRecording {
+        background-color: #4CAF50;
+        color: white;
+      }
+      #stopRecording {
+        background-color: #f44336;
+        color: white;
+      }
+      #submitRecording {
+        background-color: #008CBA;
+        color: white;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+      button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+      #submissionMessage {
+        text-align: center;
+        color: #4CAF50;
+        font-weight: bold;
+      }
+    </style>
+    <script async type="text/javascript" src="https://assets.zencite.in/orca/media/embed/quickshootEmbed.js?1"></script>
+    <script>
+      // ... (rest of the script remains unchanged)
+    </script>
+</head>
+<body>
+  <div data-host="showcase-qa.zencite.in">
+    <div class="container">
+      <div class="header">
+          <h1>Assessment Page</h1>
+          <p>Please complete the assessment below:</p>
+      </div>
+      <div class="assessment">
+          <h2>Question 1</h2>
+          <p>What is the capital of France?</p>
+          <input type="text" name="question1" id="question1" placeholder="Your answer here">
+      </div>
+      <div class="assessment">
+          <h2>Question 2</h2>
+          <p>What is 2 + 2?</p>
+          <input type="text" name="question2" id="question2" placeholder="Your answer here">
+      </div>
+      <div class="kpoint-recording-controls">
+        <button id="startRecording">Start Screen Recording</button>
+        <button id="stopRecording">Stop Screen Recording</button>
+        <button id="submitRecording">Submit Screen Recording</button>
+      </div>
+      <p id="submissionMessage" style="display:none;">Recording has been submitted.</p>
+    </div>
+  </div>
+  <script>
+    // ... (rest of the script remains unchanged)
+  </script>
+</body>
+</html>
