@@ -100,6 +100,9 @@
         console.log("No name entered. Recording not submitted.");
         }
         }
+        startBtn.addEventListener('click', startScreenRecording);
+        stopBtn.addEventListener('click', stopScreenRecording);
+        submitBtn.addEventListener('click', submitScreenRecording);
     </script>
 </head>
 <body>
@@ -128,9 +131,9 @@
     </div>
   </div>
   <script>
-      startBtn.addEventListener('click', startScreenRecording);
-      stopBtn.addEventListener('click', stopScreenRecording);
-      submitBtn.addEventListener('click', submitScreenRecording);
+      // startBtn.addEventListener('click', startScreenRecording);
+      // stopBtn.addEventListener('click', stopScreenRecording);
+      // submitBtn.addEventListener('click', submitScreenRecording);
   </script>
 </body>
 </html>
